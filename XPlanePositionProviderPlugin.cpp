@@ -38,12 +38,12 @@ QString XPlanePositionProviderPlugin::nameId() const
 
 QString XPlanePositionProviderPlugin::guiString() const
 {
-    return tr( "XPlane_v.11" );
+    return tr( "X-Plane" );
 }
 
 QString XPlanePositionProviderPlugin::version() const
 {
-    return QStringLiteral(".11");
+    return QStringLiteral(".13");
 }
 
 QString XPlanePositionProviderPlugin::description() const
@@ -73,7 +73,7 @@ void XPlanePositionProviderPlugin::initialize()
     emit statusChanged( m_status );
 
     m_socket = new QUdpSocket(this);
-    m_socket->bind(QHostAddress::LocalHost, 49003);
+    m_socket->bind(QHostAddress::Any, 49003);
 
     connect(m_socket, SIGNAL(readyRead()),
              this, SLOT(readPendingDatagrams()));
@@ -154,21 +154,21 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
 		if ( data[__offset] == 0x13 ) __offset += 36;
 		if ( data[__offset] == 0x14 ) {
 			memcpy(&__lat__deg, &data[__offset+4], sizeof(float));
-			if (__debug) printf("__lat__deg = %f\n", __lat__deg);
+			if (__debug) printf("__lat,__deg : %f\n", __lat__deg);
 			memcpy(&__lon__deg, &data[__offset+8], sizeof(float));
-			if (__debug) printf("__lon__deg = %f\n", __lon__deg);
+			if (__debug) printf("__lon,__deg : %f\n", __lon__deg);
 			memcpy(&__altftmsl, &data[__offset+12], sizeof(float));
-			if (__debug) printf("__altftmsl = %f\n", __altftmsl);
+			if (__debug) printf("__alt,ftmsl : %f\n", __altftmsl);
 			memcpy(&__altftagl, &data[__offset+16], sizeof(float));
-			if (__debug) printf("__altftagl = %f\n", __altftmsl);
+			if (__debug) printf("__alt,ftagl : %f\n", __altftmsl);
 			memcpy(&___onrunwy, &data[__offset+20], sizeof(float));
-			if (__debug) printf("___onrunwy = %f\n", ___onrunwy);
+			if (__debug) printf("___on,runwy : %f\n", ___onrunwy);
 			memcpy(&__alt__ind, &data[__offset+24], sizeof(float));
-			if (__debug) printf("__alt__ind = %f\n", __alt__ind);
+			if (__debug) printf("__alt,__ind : %f\n", __alt__ind);
 			memcpy(&__latsouth, &data[__offset+28], sizeof(float));
-			if (__debug) printf("__latsouth = %f\n", __latsouth);
+			if (__debug) printf("__lat,south : %f\n", __latsouth);
 			memcpy(&__lat_west, &data[__offset+32], sizeof(float));
-			if (__debug) printf("__lat_west = %f\n", __lat_west);
+			if (__debug) printf("__lat,_west : %f\n", __lat_west);
 			__offset += 36;
 		}
 
