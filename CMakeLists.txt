@@ -1,4 +1,3 @@
-
 PROJECT( XPlanePositionProviderPlugin )
 
 INCLUDE_DIRECTORIES(
