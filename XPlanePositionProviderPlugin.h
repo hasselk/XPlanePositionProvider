@@ -1,16 +1,7 @@
-//
-// This file is part of the Marble Virtual Globe.
-//
-// This program is free software licensed under the GNU LGPL. You can
-// find a copy of this license in LICENSE.txt in the top directory of
-// the source code.
-//
 // Copyright 2012 Ralf Habacker <ralf.habacker@freenet.de>
 //
 // Hacked by @akeyla420 for X-Plane 10.51 position tracking
-// akeyla@protonmail.ch
-// Twitter / Gab.ai
-// SUPPORT FREE SPEECH AND THE FIRST AMENDMENT
+// akeyla@protonmail.ch, December 31st, 2016
 
 #ifndef XPLANEPOSITIONPROVIDERPLUGIN_H
 #define XPLANEPOSITIONPROVIDERPLUGIN_H
@@ -61,8 +52,6 @@ private Q_SLOTS:
    void readPendingDatagrams();
 
  private:
-    //void parseNmeaSentence(const QString &sentence);
-    //static double parsePosition(const QString &value, bool isNegative);
     QUdpSocket* m_socket;
     PositionProviderStatus m_status;
     GeoDataCoordinates m_position;
@@ -73,5 +62,4 @@ private Q_SLOTS:
 };
 
 }
-
 #endif // XPLANEPOSITIONPROVIDERPLUGIN_H
