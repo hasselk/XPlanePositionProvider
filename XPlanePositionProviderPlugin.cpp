@@ -1,17 +1,7 @@
-//
-// This file is part of the Marble Virtual Globe.
-//
-// This program is free software licensed under the GNU LGPL. You can
-// find a copy of this license in LICENSE.txt in the top directory of
-// the source code.
-//
 // Copyright 2012 Ralf Habacker <ralf.habacker@freenet.de>
 //
 // Hacked by @akeyla420 for X-Plane 10.51 position tracking
-// akeyla@protonmail.ch
-// Twitter / Gab.ai
-// SUPPORT FREE SPEECH AND THE FIRST AMENDMENT
-// December 31st, 2016
+// akeyla@protonmail.ch, December 31st, 2016
 
 #include "XPlanePositionProviderPlugin.h"
 
@@ -130,57 +120,57 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
 		if ( data[__offset] == 0x01 ) __offset += 36;
 		if ( data[__offset] == 0x02 ) __offset += 36;
 		if ( data[__offset] == 0x03 ) {
-                        memcpy(&_Vind_kias, &data[__offset+4], sizeof(float));
-                        if (__debug) printf ("_Vind,_kias : %f\n", _Vind_kias);
-                        memcpy(&_Vind_keas, &data[__offset+8], sizeof(float));
-                        if (__debug) printf ("_Vind,_keas : %f\n", _Vind_keas);
-                        memcpy(&Vtrue_ktas, &data[__offset+12], sizeof(float));
-                        if (__debug) printf ("Vtrue,_ktas : %f\n", Vtrue_ktas);
-                        memcpy(&Vtrue_ktgs, &data[__offset+16], sizeof(float));
-                        if (__debug) printf ("Vtrue,_ktgs : %f\n", Vtrue_ktgs);
-                        memcpy(&_Vind__mph, &data[__offset+20], sizeof(float));
-                        if (__debug) printf ("_Vind,__mph : %f\n", _Vind__mph);
-                        memcpy(&Vtruemphas, &data[__offset+24], sizeof(float));
-                        if (__debug) printf ("Vtrue,mphas : %f\n", Vtruemphas);
-                        memcpy(&Vtruemphgs, &data[__offset+28], sizeof(float));
-                        if (__debug) printf ("Vtrue,mphgs : %f\n", Vtruemphgs);
-                        __offset += 36;
-                }
-                if ( data[__offset] == 0x04 ) __offset += 36;
-                if ( data[__offset] == 0x05 ) __offset += 36;
-                if ( data[__offset] == 0x06 ) __offset += 36;
-                if ( data[__offset] == 0x07 ) __offset += 36;
-                if ( data[__offset] == 0x08 ) __offset += 36;
-                if ( data[__offset] == 0x09 ) __offset += 36;
-                if ( data[__offset] == 0x0a ) __offset += 36;
-                if ( data[__offset] == 0x0b ) __offset += 36;
-                if ( data[__offset] == 0x0c ) __offset += 36;
-                if ( data[__offset] == 0x0d ) __offset += 36;
-                if ( data[__offset] == 0x0e ) __offset += 36;
-                if ( data[__offset] == 0x0f ) __offset += 36;
-                if ( data[__offset] == 0x10 ) __offset += 36;
-                if ( data[__offset] == 0x11 ) __offset += 36;
-                if ( data[__offset] == 0x12 ) __offset += 36;
-                if ( data[__offset] == 0x13 ) __offset += 36;
-                if ( data[__offset] == 0x14 ) {
-                        memcpy(&__lat__deg, &data[__offset+4], sizeof(float));
-                        if (__debug) printf("__lat__deg = %f\n", __lat__deg);
-                        memcpy(&__lon__deg, &data[__offset+8], sizeof(float));
-                        if (__debug) printf("__lon__deg = %f\n", __lon__deg);
-                        memcpy(&__altftmsl, &data[__offset+12], sizeof(float));
-                        if (__debug) printf("__altftmsl = %f\n", __altftmsl);
-                        memcpy(&__altftagl, &data[__offset+16], sizeof(float));
-                        if (__debug) printf("__altftagl = %f\n", __altftmsl);
-                        memcpy(&___onrunwy, &data[__offset+20], sizeof(float));
-                        if (__debug) printf("___onrunwy = %f\n", ___onrunwy);
-                        memcpy(&__alt__ind, &data[__offset+24], sizeof(float));
-                        if (__debug) printf("__alt__ind = %f\n", __alt__ind);
-                        memcpy(&__latsouth, &data[__offset+28], sizeof(float));
-                        if (__debug) printf("__latsouth = %f\n", __latsouth);
-                        memcpy(&__lat_west, &data[__offset+32], sizeof(float));
-                        if (__debug) printf("__lat_west = %f\n", __lat_west);
-                        __offset += 36;
-                }
+			memcpy(&_Vind_kias, &data[__offset+4], sizeof(float));
+			if (__debug) printf ("_Vind,_kias : %f\n", _Vind_kias);
+			memcpy(&_Vind_keas, &data[__offset+8], sizeof(float));
+			if (__debug) printf ("_Vind,_keas : %f\n", _Vind_keas);
+			memcpy(&Vtrue_ktas, &data[__offset+12], sizeof(float));
+			if (__debug) printf ("Vtrue,_ktas : %f\n", Vtrue_ktas);
+			memcpy(&Vtrue_ktgs, &data[__offset+16], sizeof(float));
+			if (__debug) printf ("Vtrue,_ktgs : %f\n", Vtrue_ktgs);
+			memcpy(&_Vind__mph, &data[__offset+20], sizeof(float));
+			if (__debug) printf ("_Vind,__mph : %f\n", _Vind__mph);
+			memcpy(&Vtruemphas, &data[__offset+24], sizeof(float));
+			if (__debug) printf ("Vtrue,mphas : %f\n", Vtruemphas);
+			memcpy(&Vtruemphgs, &data[__offset+28], sizeof(float));
+			if (__debug) printf ("Vtrue,mphgs : %f\n", Vtruemphgs);
+			__offset += 36;
+		}
+		if ( data[__offset] == 0x04 ) __offset += 36;
+		if ( data[__offset] == 0x05 ) __offset += 36;
+		if ( data[__offset] == 0x06 ) __offset += 36;
+		if ( data[__offset] == 0x07 ) __offset += 36;
+		if ( data[__offset] == 0x08 ) __offset += 36;
+		if ( data[__offset] == 0x09 ) __offset += 36;
+		if ( data[__offset] == 0x0a ) __offset += 36;
+		if ( data[__offset] == 0x0b ) __offset += 36;
+		if ( data[__offset] == 0x0c ) __offset += 36;
+		if ( data[__offset] == 0x0d ) __offset += 36;
+		if ( data[__offset] == 0x0e ) __offset += 36;
+		if ( data[__offset] == 0x0f ) __offset += 36;
+		if ( data[__offset] == 0x10 ) __offset += 36;
+		if ( data[__offset] == 0x11 ) __offset += 36;
+		if ( data[__offset] == 0x12 ) __offset += 36;
+		if ( data[__offset] == 0x13 ) __offset += 36;
+		if ( data[__offset] == 0x14 ) {
+			memcpy(&__lat__deg, &data[__offset+4], sizeof(float));
+			if (__debug) printf("__lat__deg = %f\n", __lat__deg);
+			memcpy(&__lon__deg, &data[__offset+8], sizeof(float));
+			if (__debug) printf("__lon__deg = %f\n", __lon__deg);
+			memcpy(&__altftmsl, &data[__offset+12], sizeof(float));
+			if (__debug) printf("__altftmsl = %f\n", __altftmsl);
+			memcpy(&__altftagl, &data[__offset+16], sizeof(float));
+			if (__debug) printf("__altftagl = %f\n", __altftmsl);
+			memcpy(&___onrunwy, &data[__offset+20], sizeof(float));
+			if (__debug) printf("___onrunwy = %f\n", ___onrunwy);
+			memcpy(&__alt__ind, &data[__offset+24], sizeof(float));
+			if (__debug) printf("__alt__ind = %f\n", __alt__ind);
+			memcpy(&__latsouth, &data[__offset+28], sizeof(float));
+			if (__debug) printf("__latsouth = %f\n", __latsouth);
+			memcpy(&__lat_west, &data[__offset+32], sizeof(float));
+			if (__debug) printf("__lat_west = %f\n", __lat_west);
+			__offset += 36;
+		}
 
 		m_speed = _Vind_kias * .514444; // Cause speed math
 		m_position.set( __lon__deg, __lat__deg, __altftmsl/3.2808399, GeoDataCoordinates::Degree );
@@ -239,5 +229,3 @@ QString XPlanePositionProviderPlugin::error() const
 {
     return QString();
 }
-
-#include "moc_XPlanePositionProviderPlugin.cpp"
