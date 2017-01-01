@@ -1,9 +1,7 @@
 # XPlanePositionProvider
 KDE Marble plugin to parse X-Plane UDP packets and track position.
-@akeyla420, akeyla@protonmail.ch
 
-Let's see what I can come up with for an "install guide"...
-I had a pretty fresh Ubuntu 16.04 install on an extra computer, so I tried building marble on it and wrote this down as I went.
+@akeyla420, akeyla@protonmail.ch
 
 The following were the extra libraries I needed to install
 > sudo apt install git cmake qtdeclarative5-dev libqt5svg5-dev
