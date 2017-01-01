@@ -3,7 +3,7 @@ KDE Marble plugin to parse X-Plane UDP packets and track position.
 
 @akeyla420, akeyla@protonmail.ch
 
-The following were the extra libraries I needed to install
+The following are extra libraries you'll need to install for the build
 > sudo apt install git cmake qtdeclarative5-dev libqt5svg5-dev
 
 Download the marble source from kde.org.  Some of these instructions where taken from https://marble.kde.org/sources.php
