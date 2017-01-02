@@ -43,7 +43,7 @@ QString XPlanePositionProviderPlugin::guiString() const
 
 QString XPlanePositionProviderPlugin::version() const
 {
-    return QStringLiteral(".13");
+    return QStringLiteral(".14");
 }
 
 QString XPlanePositionProviderPlugin::description() const
@@ -88,7 +88,7 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
 
 	int	__offset = 0;
 
-	float   _Vind_kias,
+	float   _Vind_kias, //Block 3
                 _Vind_keas,
                 Vtrue_ktas,
                 Vtrue_ktgs,
@@ -96,7 +96,13 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
                 Vtruemphas,
                 Vtruemphgs;
 
-	float   __lat__deg,
+	float	pitch__deg, //Block 17
+		_roll__deg,
+		hding_true,
+		hding__mag;
+
+
+	float   __lat__deg, //Block 20
                 __lon__deg,
                 __altftmsl,
                 __altftagl,
@@ -104,6 +110,7 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
                 __alt__ind,
                 __latsouth,
                 __lat_west;
+
 
 	while (m_socket->hasPendingDatagrams()) {
 		__offset = 5;
@@ -149,7 +156,17 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
 		if ( data[__offset] == 0x0e ) __offset += 36;
 		if ( data[__offset] == 0x0f ) __offset += 36;
 		if ( data[__offset] == 0x10 ) __offset += 36;
-		if ( data[__offset] == 0x11 ) __offset += 36;
+		if ( data[__offset] == 0x11 ) {
+			memcpy(&pitch__deg, &data[__offset+4], sizeof(float));
+			if (__debug) printf ("pitch,__deg : %f\n", pitch__deg);
+			memcpy(&_roll__deg, &data[__offset+8], sizeof(float));
+			if (__debug) printf ("_roll,__del : %f\n", _roll__deg);
+			memcpy(&hding_true, &data[__offset+12], sizeof(float));
+			if (__debug) printf ("hding,_true : %f\n", hding_true);
+			memcpy(&hding__mag, &data[__offset+16], sizeof(float));
+			if (__debug) printf ("hding,__mag : %f\n", hding__mag);
+			__offset += 36;
+		}
 		if ( data[__offset] == 0x12 ) __offset += 36;
 		if ( data[__offset] == 0x13 ) __offset += 36;
 		if ( data[__offset] == 0x14 ) {
@@ -176,6 +193,7 @@ void XPlanePositionProviderPlugin::readPendingDatagrams()
 		m_position.set( __lon__deg, __lat__deg, __altftmsl/3.2808399, GeoDataCoordinates::Degree );
 		m_accuracy.level = GeoDataAccuracy::Detailed;
 		m_status = PositionProviderStatusAvailable;
+		m_track = hding__mag;
 	}
 	if ( m_status != oldStatus ) {
 		emit statusChanged( m_status );
@@ -218,11 +236,6 @@ qreal XPlanePositionProviderPlugin::speed() const
 qreal XPlanePositionProviderPlugin::direction() const
 {
     return m_track;
-}
-
-QDateTime XPlanePositionProviderPlugin::timestamp() const
-{
-    return m_timestamp;
 }
 
 QString XPlanePositionProviderPlugin::error() const
