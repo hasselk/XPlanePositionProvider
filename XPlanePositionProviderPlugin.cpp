@@ -242,3 +242,8 @@ QString XPlanePositionProviderPlugin::error() const
 {
     return QString();
 }
+
+QDateTime XPlanePositionProviderPlugin::timestamp() const
+{
+    return m_timestamp;
+}
