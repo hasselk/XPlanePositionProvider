@@ -31,4 +31,5 @@ Build it!
 > marble-qt
 
 Once Marble is loaded, on the Location tab, under Position Tracking, select X-Plane.
+
 Set X-Plane to output datasets 3, 17, 20 to the IP of the machine running Marble, port 49003
