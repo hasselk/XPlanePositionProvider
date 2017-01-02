@@ -58,7 +58,7 @@ private Q_SLOTS:
     GeoDataAccuracy m_accuracy;
     qreal m_speed;
     qreal m_track;
-    QDateTime m_timestamp;
+    //QDateTime m_timestamp;
 };
 
 }
